@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -48,7 +49,29 @@ private EntityManagerCRUD entityManagerCRUD;
         Long count = entityManagerCRUD.saveAndReturnAllCount(menu);
 
         // then
-        assertEquals(26, count);
+        assertEquals(27, count); //expected는 현재 데이터베이스 menu 테이블의 행 수 +1
     }
+
+    @DisplayName("메뉴 이름 수정 테스트")
+    @ParameterizedTest
+    @CsvSource("1. 변경된 이름")
+    void testModifyMenuName(int menuCode, String menuName){
+        // when
+        Menu modifiedMenu = entityManagerCRUD.modifyMenuname(menuCode,menuName);
+        // then
+        assertEquals(menuName, modifiedMenu.getMenuName());
+    }
+
+
+    @DisplayName("메뉴 코드로 메뉴 삭제 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {21})
+    void testRemoveMenu(int menuCode){
+        // when
+        Long count = entityManagerCRUD.removeAndReturnAllCount(menuCode);
+        // then
+        assertEquals(24, count);
+    }
+
 
 }

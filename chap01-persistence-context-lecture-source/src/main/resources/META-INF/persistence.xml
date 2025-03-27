@@ -4,6 +4,7 @@
     <!-- 엔티티 매니저 팩토리를 식별하기 위한 이름 설정 -->
     <persistence-unit name="jpatest">
         <class>com.neeko.section02.crud.Menu</class>
+        <class>com.neeko.section03.entity.Menu</class>
         <properties>
             <!-- 데이터 베이스 연결 정보 -->
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>

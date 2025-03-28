@@ -1,50 +1,25 @@
-package com.neeko.section03.entity;
+package com.ohgiraffers.associationmapping.section02.onetomany;
 
-import jakarta.persistence.*;
+public class MenuDTO {
 
-// 기본 이름은 클래스명이며 중복 되면 안되므로 명시함
-@Entity(name = "Section03Menu")
-@Table(name = "tbl_menu")
-public class Menu {
-
-    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_code")
     private int menuCode;
-
-    @Column(name = "menu_name")
     private String menuName;
-
-    @Column(name = "menu_price")
     private int menuPrice;
-
-    @Column(name = "category_code")
     private int categoryCode;
-
-    @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    public MenuDTO() {
+    }
+
+    public MenuDTO(
+            int menuCode, String menuName, int menuPrice,
+            int categoryCode, String orderableStatus
+    ) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
         this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
-    }
-
-    public Menu() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Menu{" +
-                "menuCode=" + menuCode +
-                ", menuName='" + menuName + '\'' +
-                ", menuPrice=" + menuPrice +
-                ", categoryCode=" + categoryCode +
-                ", orderableStatus='" + orderableStatus + '\'' +
-                '}';
     }
 
     public int getMenuCode() {
@@ -85,5 +60,16 @@ public class Menu {
 
     public void setOrderableStatus(String orderableStatus) {
         this.orderableStatus = orderableStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuDTO{" +
+                "menuCode=" + menuCode +
+                ", menuName='" + menuName + '\'' +
+                ", menuPrice=" + menuPrice +
+                ", categoryCode=" + categoryCode +
+                ", orderableStatus='" + orderableStatus + '\'' +
+                '}';
     }
 }

@@ -10,7 +10,9 @@ public class EntityLifeCycle {
         return entityManager.find(Menu.class, menuCode);
     }
 
-    public EntityManager getMangerInstance(){
+    public EntityManager getManagerInstance(){
         return entityManager;
     }
+
+
 }

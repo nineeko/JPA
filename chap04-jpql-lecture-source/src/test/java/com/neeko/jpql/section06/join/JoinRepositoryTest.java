@@ -28,4 +28,39 @@ class JoinRepositoryTest {
         List<Menu> menus = joinRepository.selectByFetchJoin();
         assertNotNull(menus);
     }
+
+    @DisplayName("outer join 테스트")
+    @Test
+    void testSelectByOuterJoin(){
+        List<Object[]> menuList = joinRepository.selectByOuterJoin();
+        assertNotNull(menuList);
+        menuList.forEach(
+                row -> {
+                    for(Object column : row) System.out.print(column + " ");
+                    System.out.println();
+                });
+    }
+    @DisplayName("collection join 테스트")
+    @Test
+    void testSelectByCollectionJoin(){
+        List<Object[]> menuList = joinRepository.selectByCollectionJoin();
+        assertNotNull(menuList);
+        menuList.forEach(
+                row -> {
+                    for(Object column : row) System.out.print(column + " ");
+                    System.out.println();
+                });
+    }
+
+    @DisplayName("theta join 테스트")
+    @Test
+    void testSelectByThetaJoin(){
+        List<Object[]> menuList = joinRepository.selectByThetaJoin();
+        assertNotNull(menuList);
+        menuList.forEach(
+                row -> {
+                    for(Object column : row) System.out.print(column + " ");
+                    System.out.println();
+                });
+    }
 }

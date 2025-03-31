@@ -25,4 +25,21 @@ public class JoinRepository {
         return entityManager.createQuery(jpql, Menu.class).getResultList();
 
     }
+
+    public List<Object[]> selectByOuterJoin(){
+        String jpql = "SELECT m.menuName, c.categoryName FROM Section06Menu m "+
+                "RIGHT JOIN m.category c";
+        return entityManager.createQuery(jpql).getResultList();
+    }
+    public List<Object[]> selectByCollectionJoin(){
+        String jpql = "SELECT c.categoryName, m.menuName FROM Section06Category c " +
+                "LEFT JOIN c.menuList m";
+        return entityManager.createQuery(jpql).getResultList();
+    }
+
+    public List<Object[]> selectByThetaJoin(){
+        String jpql = "SELECT c.categoryCode, m.menuName FROM Section06Category c, " +
+            "Section06Menu m";
+        return entityManager.createQuery(jpql).getResultList();
+    }
 }
